@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="tarefasApp">
+    <head>
+        <title>Tarefas</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/estilo.css"/>
+    </head>
+    <body ng-controller="TarefasController">
+        <input type="text" ng-model="tarefa.descricao"/>
+        <button ng-click="salvar(tarefa)">Salvar</button>
+        <p>
+            Filtro:  <input type="text" ng-model="filtro" ng-change="buscar(filtro)"/>
+        </p>
+
+        <ul>
+            <li ng-repeat="tarefa in tarefas track by $index"
+                ng-class="{
+                    'nova-tarefa': tarefa.concluida === undefined || tarefa.concluida === false,
+                    'tarefa-concluida': tarefa.concluida === true        
+                }"
+                >
+                {{$index + 1}} - {{tarefa.descricao}}
+                <a href="#" ng-click="concluir(tarefa)">[Concluir]</a>
+                <a href="#" ng-click="editar(tarefa)">[Editar]</a>
+                <a href="#" ng-click="excluir(tarefa)">[Excluir]</a>
+            </li>
+        </ul>
+        <script src="js/angular.min.js"></script>
+        <script src="js/tarefas.js"></script>
+    </body>
+</html>

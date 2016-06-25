@@ -1,0 +1,8 @@
+.nova-tarefa {
+    color: red;
+}
+
+.tarefa-concluida {
+    color: green;
+    text-decoration: line-through;
+}
